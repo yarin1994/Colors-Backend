@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 let cors = require("cors");
 const colorsRoutes = require("./routes/colors-routes");
 require('dotenv').config();
+const port = process.env.PORT || 5001;
 
 const connectionString =  process.env.CONNECTION_STRING;
 const app = express();
@@ -32,7 +33,7 @@ app.use((error, req, res, next) => {
       connectionString
     )
     .then(() => {
-      app.listen(5001);
+      app.listen(port);
       console.log("connected to db");
     })
     .catch((err) => {
